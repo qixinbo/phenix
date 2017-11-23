@@ -1,4 +1,5 @@
-# This file is for generating deformed and recrystalized grains, i.e, the original matrix grains
+# This file is for generating deformed grains, i.e, the original matrix grains
+# 该文件使用了PolycrystalVoronoiVoidIC来生成变形晶粒
 
 [Mesh]
   # Mesh block.  Meshes can be read in or automatically generated
