@@ -5,8 +5,8 @@
   # Mesh block.  Meshes can be read in or automatically generated
   type = GeneratedMesh
   dim = 2 # Problem dimension
-  nx = 64 # Number of elements in the x-direction
-  ny = 64 # Number of elements in the y-direction
+  nx = 32 # Number of elements in the x-direction
+  ny = 32 # Number of elements in the y-direction
   xmin = 0 # minimum x-coordinate of the mesh
   xmax = 64 # maximum x-coordinate of the mesh
   ymin = 0 # minimum y-coordinate of the mesh
@@ -15,10 +15,10 @@
 []
 
 [GlobalParams]
-  int_width = 1.0
+  int_width = 4.0
   time_scale = 1e-2
   length_scale = 1e-8
-  deformed_grain_num = 3
+  deformed_grain_num = 10
 []
 
 [Variables]
@@ -38,6 +38,8 @@
     var_name_base = gr
     compute_var_to_feature_map = true
     flood_entity_type = elemental
+    execute_on = 'initial timestep_begin'
+    outputs = none
   [../]
 []
 
@@ -45,12 +47,12 @@
   [./PolycrystalICs]
     [./PolycrystalVoronoiVoidIC]
       var_name_base = gr
-      grain_num = 3
-      numbub = 2 
-      op_num = 3
+      grain_num = 10
+      numbub = 3 
+      op_num = 8
       bubspac = 15 
       outvalue = 0
-      radius = 5
+      radius = 7
       invalue = 1
     [../]
   []
@@ -59,12 +61,12 @@
     type = PolycrystalVoronoiVoidIC
     structure_type = voids
     var_name_base = gr
-    grain_num = 3
-    numbub = 2 
-    op_num = 3 
+    grain_num = 10
+    numbub = 3 
+    op_num = 8
     bubspac = 15
     outvalue = 0
-    radius = 5 
+    radius = 7 
     invalue = 1
   [../]
 []
@@ -124,7 +126,7 @@
 
 [Materials]
   [./deformed]
-    type = MyDeformedGrainMaterial
+    type = DeformedGrainMaterial
     grain_tracker = grain_tracker
     outputs = exodus
     var_name_base = gr
@@ -148,7 +150,7 @@
   petsc_options_iname = -pc_type
   petsc_options_value = asm
   l_max_its = 15
-  l_tol = 1.0e-6
+  l_tol = 1.0e-3
   nl_rel_tol = 1.0e-8
   start_time = 0.0
   num_steps = 200

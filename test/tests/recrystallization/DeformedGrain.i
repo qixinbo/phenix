@@ -15,9 +15,9 @@
   int_width = 4.0
   block = 0
   op_num = 18
-  deformed_grain_num = 17
+  deformed_grain_num = 3
   var_name_base = gr
-  grain_num = 18
+  grain_num = 4 
   grain_tracker = grain_tracker
   time_scale = 1e-2
   length_scale = 1e-8

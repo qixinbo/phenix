@@ -5,7 +5,6 @@
 #include "MooseSyntax.h"
 
 // Materials
-#include "MyDeformedGrainMaterial.h"
 
 template <>
 InputParameters
@@ -38,7 +37,6 @@ void
 phenixApp::registerObjects(Factory & factory)
 {
   /* Uncomment Factory parameter and register your new production objects here! */
-  registerMaterial(MyDeformedGrainMaterial);
 }
 
 void

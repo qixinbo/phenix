@@ -16,7 +16,7 @@
 []
 
 [GlobalParams]
-  int_width = 1.0
+  int_width = 4.0
   time_scale = 1e-2
   length_scale = 1e-8
   deformed_grain_num = 3
